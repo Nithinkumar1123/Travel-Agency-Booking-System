@@ -19,7 +19,7 @@ const BookingForm = () => {
   useEffect(() => {
     const fetchPackageDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/packages/${id}`);
+        const response = await axios.get(`https://travel-agency-booking-system-rps0.onrender.com/packages/${id}`);
         setPackageDetails(response.data);
       } catch (err) {
         console.error('Error fetching package details:', err);
@@ -48,7 +48,7 @@ const BookingForm = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/bookings', bookingData);
+      const response = await axios.post('https://travel-agency-booking-system-rps0.onrender.com/api/bookings', bookingData);
       if (response.status === 201) {
         setSuccessMessage('Booking submitted successfully!');
         setErrorMessage('');
