@@ -10,7 +10,7 @@ const AdminPanel = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/packages');
+        const res = await axios.get('https://travel-agency-booking-system-rps0.onrender.com/packages');
         setPackages(res.data);
       } catch (err) {
         console.error('Error fetching packages:', err);
@@ -19,7 +19,7 @@ const AdminPanel = () => {
 
     const fetchBookings = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/bookings');
+        const res = await axios.get('https://travel-agency-booking-system-rps0.onrender.com/api/bookings');
         setBookings(res.data);
       } catch (err) {
         console.error('Error fetching bookings:', err);
@@ -33,7 +33,7 @@ const AdminPanel = () => {
   // Handle package deletion
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/admin/packages/${id}`);
+      await axios.delete(`https://travel-agency-booking-system-rps0.onrender.com/admin/packages/${id}`);
       setPackages(packages.filter(pkg => pkg._id !== id));
     } catch (err) {
       console.error('Error deleting package:', err);
