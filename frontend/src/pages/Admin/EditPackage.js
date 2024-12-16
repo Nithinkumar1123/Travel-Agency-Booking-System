@@ -14,7 +14,7 @@ const EditPackage = () => {
   useEffect(() => {
     const fetchPackage = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/packages/${id}`);
+        const res = await axios.get(`https://travel-agency-booking-system-rps0.onrender.com/packages/${id}`);
         const packageData = res.data;
         setTitle(packageData.title);
         setDescription(packageData.description);
@@ -36,7 +36,7 @@ const EditPackage = () => {
     const updatedPackage = { title, description, price, image };
 
     try {
-      await axios.put(`http://localhost:5000/admin/packages/${id}`, updatedPackage);
+      await axios.put(`https://travel-agency-booking-system-rps0.onrender.com/admin/packages/${id}`, updatedPackage);
       alert('Package updated successfully');
       navigate('/admin');  // Redirect to the admin dashboard after successful update
     } catch (err) {
