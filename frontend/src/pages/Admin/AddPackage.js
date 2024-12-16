@@ -14,7 +14,7 @@ const AddPackage = () => {
     const newPackage = { title, description, price, image };
 
     try {
-      const response = await axios.post('http://localhost:5000/admin/packages', newPackage);
+      const response = await axios.post('https://travel-agency-booking-system-rps0.onrender.com/admin/packages', newPackage);
       console.log('Package added:', response.data);
       alert('Package added successfully');
     } catch (err) {
