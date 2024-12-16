@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const BookingForm = () => {
@@ -14,6 +14,7 @@ const BookingForm = () => {
   });
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Initialize the navigate hook
 
   // Fetch package details by ID
   useEffect(() => {
@@ -59,6 +60,12 @@ const BookingForm = () => {
           travelers: 1,
           specialRequest: '',
         });
+
+        // Hide success message after 3 seconds and redirect to home page
+        setTimeout(() => {
+          setSuccessMessage('');
+          navigate('/');
+        }, 3000);
       }
     } catch (error) {
       console.error('Error submitting booking:', error.response || error.message);
