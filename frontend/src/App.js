@@ -7,6 +7,7 @@ import BookingForm from './pages/BookingForm';
 import AdminPanel from './pages/AdminPanel';
 import AddPackage from './pages/Admin/AddPackage';
 import EditPackage from './pages/Admin/EditPackage';
+import Main from './main';
 
 
 
@@ -15,7 +16,8 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/package/:id" element={<PackageDetails />} />
         <Route path="/book/:id" element={<BookingForm />} />
         <Route path="/admin" element={<AdminPanel />} />
