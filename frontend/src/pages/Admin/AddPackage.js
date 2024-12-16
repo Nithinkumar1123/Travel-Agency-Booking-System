@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 
 const AddPackage = () => {
@@ -6,6 +7,9 @@ const AddPackage = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -16,16 +20,26 @@ const AddPackage = () => {
     try {
       const response = await axios.post('https://travel-agency-booking-system-rps0.onrender.com/admin/packages', newPackage);
       console.log('Package added:', response.data);
-      alert('Package added successfully');
+      setSuccessMessage('Package added successfully');
+      setErrorMessage('');
+      
+      // Redirect after 3 seconds
+      setTimeout(() => {
+        setSuccessMessage('');
+        navigate('/'); // Redirect to home page
+      }, 3000);
     } catch (err) {
       console.error('Error adding package:', err);
-      alert('Failed to add package');
+      setErrorMessage('Failed to add package');
+      setSuccessMessage('');
     }
   };
 
   return (
     <div className="container mt-5">
       <h2>Add New Package</h2>
+      {successMessage && <div className="alert alert-success">{successMessage}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Title</label>
