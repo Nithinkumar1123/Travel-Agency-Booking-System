@@ -170,6 +170,10 @@ app.get('/api/bookings/:id', async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("<center> <h1>Backend in working well, for Travel Agency Booking System. </h1> <br> <h2>Now Start working Frontend <h2><center>");
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
