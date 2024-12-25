@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: '*', // Frontend URL
+  origin: 'https://travel-agency-booking-system-iyz6.vercel.app/', // Frontend URL or put *
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
